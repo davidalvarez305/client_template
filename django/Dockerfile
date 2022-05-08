@@ -1,15 +1,8 @@
 # Pull Official Base Image
 FROM python:3.10.2-alpine3.15
 
-ENV PATH="/scripts:${PATH}"
-ENV PRODUCTION=1
-
 # Set Work Dir
 WORKDIR /django/django_client/
-
-# Set Environment Variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
 
 # Install Psycopg2 Dependencies
 RUN apk update \
