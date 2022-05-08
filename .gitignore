@@ -1,5 +1,4 @@
 */*.sql
-*/*.sh
 */*.conf
 */*.env
 */*.json
