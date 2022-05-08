@@ -1,0 +1,94 @@
+{% extends "blog/post_base.html" %}
+{% block content %}
+ <!-- Post Content -->
+ <article>
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-11">
+        <h1>{{ post.headline }}</h1>
+        <p>{{ post.intro }}</p>
+        <div class="card card-horizontal">
+            <div class="card-body">
+                <div class="card-horizontal-left">
+                    <div class="card-category">
+                        <p>{{ post.productlabel }}</p>
+                    </div>
+                    <h3 class="card-title">{{ post.productname }}</h3>
+                    <div class="card-excerpt">
+                        <p>{{ post.productdescription }}</p>
+                    </div>
+                    <div class="card-horizontal-meta">
+                        <div class="eskimo-date-meta">
+                            <a class="btn btn-success btn-rounded" href="{{ post.productaffiliateurl }}">{{ product_info.productPrice }}</a>
+                        </div>
+                        <div class="eskimo-reading-meta">{{ post.productprice }}</div>
+                        <div class="eskimo-author-meta">
+                            {{ product_info.productReviews }} Reviews
+                        </div>
+                        <div class="eskimo-date-meta">
+                            {{ product_info.productRatings }} Rating
+                        </div>
+                    </div>
+                </div>
+                <div class="card-horizontal-right">
+                    <img src="{{ post.horizontalcardproductimageurl }}" alt="{{ post.horizontalcardproductimagealt }}" />
+                </div>
+            </div>
+        </div>
+        <h3>Reasons Why We're Loving {{ post.productname }}</h3>
+        <p>{{ post.content|safe }}</p>
+        <div class="card card-horizontal">
+            <div class="card-body">
+                <div class="card-horizontal-left">
+                    <div class="card-category">
+                        <p>{{ post.productlabel }}</p>
+                    </div>
+                    <h3 class="card-title">{{ post.productname }}</h3>
+                    <div class="card-excerpt">
+                        <p>{{ post.productdescription }}</p>
+                    </div>
+                    <div class="card-horizontal-meta">
+                        <div class="eskimo-date-meta">
+                            <a class="btn btn-success btn-rounded" href="{{ post.productaffiliateurl }}">{{ product_info.productPrice }}</a>
+                        </div>
+                        <div class="eskimo-reading-meta">{{ post.productprice }}</div>
+                        <div class="eskimo-author-meta">
+                            {{ product_info.productReviews }} Reviews
+                        </div>
+                        <div class="eskimo-date-meta">
+                            {{ product_info.productRatings }} Rating
+                        </div>
+                    </div>
+                </div>
+                <div class="card-horizontal-right">
+                    <img src="{{ post.horizontalcardproductimageurl }}" alt="{{ post.horizontalcardproductimagealt }}" />
+                </div>
+            </div>
+        </div>
+        <h2>{{ post.faq_question_1 }}</h2>
+        <p>{{ post.faq_answer_1|safe }}</p>
+        <h2>{{ post.faq_question_2 }}</h2>
+        <p>{{ post.faq_answer_2|safe }}</p>
+        <h2>{{ post.faq_question_3 }}</h2>
+        <p>{{ post.faq_answer_3|safe }}</p>
+        {% for r in related_rev %}
+        <div class="card card-horizontal">
+            <div class="card-body">
+                <div class="card-horizontal-left">
+                    <div class="card-category">
+                        {{ r.headline }}
+                    </div>
+                    <h3 class="card-title"><a href="/single/{{ r.slug }}">{{ r.title }}</a></h3>
+                </div>
+                <div class="card-horizontal-right">
+                    <img src="{{ r.horizontalcardproductimageurl }}" alt="{{ r.horizontalcardproductimagealt }}" />
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</article>
+
+{% endblock content %}

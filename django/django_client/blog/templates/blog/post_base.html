@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US">
+{% load static %}
+<head>
+    <title>{{ post.title }}</title>
+    {% include "blog/gtm_head" %}
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="{{ post.description }}">
+    <link rel="canonical" href="https://{{ domain }}/{{ type }}/{{ post.slug }}"/>
+    <link rel="shortcut icon" href="{% static 'media/misc/favicon.ico' %}">
+    <meta property="og:url" content="https://{{ domain }}/{{ type }}/{{ post.slug }}"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{ post.title }}"/>
+    <meta property="og:description" content="{{ post.description }}"/>
+    <meta property="og:site_name" content="{{ site_name }}"/>
+    <meta property="article:published_time" content="{{ post.createdAt }}"/>
+    <!-- CSS FILES -->
+    <link href="{% static 'blog/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'blog/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'blog/style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'blog/blog_cards.css' %}" rel="stylesheet" type="text/css">
+    </head>
+<body>
+    {% include "blog/gtm_body" %}
+    <!-- SITE WRAPPER -->
+    <div id="eskimo-site-wrapper">
+        <!-- MAIN CONTAINER -->
+        <main id="eskimo-main-container">
+            <div class="container">
+                <!-- SIDEBAR -->
+                <div id="eskimo-sidebar">
+                    <div id="eskimo-sidebar-wrapper" class="d-flex align-items-start flex-column h-100 w-100">
+                        <!-- LOGO -->
+                        <div id="eskimo-logo-cell" class="w-100">
+                            <a class="eskimo-logo-link" href="/">
+                                <img src="{% static 'media/misc/{{ logo }}.webp' %}" class="eskimo-logo" alt="{{ site_name }}" />
+                            </a>
+                        </div>
+                        <!-- MENU CONTAINER -->
+                        <div id="eskimo-sidebar-cell" class="w-100">
+                            <!-- MOBILE MENU BUTTON -->
+                            <div id="eskimo-menu-toggle">MENU</div>
+                            <!-- MENU -->
+                            <nav id="eskimo-main-menu" class="menu-main-menu-container">
+                                <ul class="eskimo-menu-ul">
+                                    <li><a href="/category/training">Training Articles</a></li>
+                                    <li><a href="/category/equipment-reviews">Equipment Reviews</a></li>
+                                    <li><a href="/category/gear-reviews">Gear Reviews</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+        <!-- FOOTER -->
+        {% include "blog/footer.html" %}
+    </div>
+</body>
+
+</html>

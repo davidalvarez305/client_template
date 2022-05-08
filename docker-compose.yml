@@ -1,0 +1,40 @@
+version: '3.7'
+
+services:
+  redis:
+    build: ./redis
+    restart: always
+    image: iamdavidmiguelalvarez/soflo_node:redis
+    volumes:
+    - static_data:/vol/redis
+    expose:
+      - 6379
+  server:
+    build: ./server
+    restart: always
+    env_file:
+      - prod.env
+    image: iamdavidmiguelalvarez/soflo_node:server
+    ports:
+    - "4000:4000"
+    depends_on:
+      - redis
+  postgres:
+    build: ./postgres
+    restart: always
+    image: iamdavidmiguelalvarez/soflo_node:postgres
+    volumes:
+    - static_data:/var/lib/postgresql/data/pgdata/
+    ports:
+      - "5432:5432"
+  django:
+    build: ./django
+    restart: always
+    image: iamdavidmiguelalvarez/soflo_node:django
+    volumes:
+    - static_data:/vol/django
+    ports:
+      - "8000:8000"
+
+volumes:
+  static_data:

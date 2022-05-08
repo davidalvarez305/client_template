@@ -1,0 +1,36 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    {% for p in posts %}
+        <div class="card card-horizontal">
+            <div class="card-body">
+                <div class="card-horizontal-left">
+                    <div class="card-category">
+                        {{ p.title }}
+                    </div>
+                    <h3 class="card-title"><a href="/{{ p.type }}/{{ p.slug }}">{{ p.title }}</a></h3>
+                    <div class="card-excerpt">
+                        <p>{{ p.description }}</p>
+                    </div>
+                </div>
+                <div class="card-horizontal-right">
+                    <img src="{{ p.horizontalcardproductimageurl }}" alt="{{ p.horizontalcardproductimagealt }}" />
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% for tp in training_posts %}
+        <div class="card card-horizontal">
+            <div class="card-body">
+                <div class="card-horizontal-left">
+                    <div class="card-category">
+                        {{ tp.title }}
+                    </div>
+                    <h3 class="card-title"><a href="/{{ tp.type }}/{{ tp.slug }}">{{ tp.title }}</a></h3>
+                    <div class="card-excerpt">
+                        <p>{{ tp.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <!-- BLOG POSTS -->
+    {% for c in categories %}
+        <div class="card card-horizontal">
+            <div class="card-body">
+                <div class="card-horizontal-left">
+                    <div class="card-category">
+                        {{ c.title }}
+                    </div>
+                    <h3 class="card-title"><a href="/category/{{ c.slug }}">{{ c.title }}</a></h3>
+                    <div class="card-excerpt">
+                        <p>Interested in {{ c.title }}? Here you can read more about it.</p>
+                    </div>
+                    <div class="card-horizontal-meta">
+                        <div class="eskimo-author-meta">
+                            David Alvarez
+                        </div>
+                        <div class="eskimo-date-meta">
+                            Oct 10, 2020
+                        </div>
+                        <div class="eskimo-reading-meta">Dozens of Articles</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}
