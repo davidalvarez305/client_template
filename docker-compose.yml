@@ -25,6 +25,7 @@ services:
     env_file:
       - .env
     volumes:
+    - /etc/letsencrypt/:/etc/letsencrypt/
     - static_data:/vol/nginx
     ports:
       - "80:80"
