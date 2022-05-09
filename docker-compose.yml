@@ -19,17 +19,6 @@ services:
     - static_data:/vol/django
     ports:
       - "8000:8000"
-  nginx:
-    build: ./nginx
-    restart: always
-    env_file:
-      - .env
-    volumes:
-    - /etc/letsencrypt/:/etc/letsencrypt/
-    - static_data:/vol/nginx
-    ports:
-      - "80:80"
-      - "443:443"
 
 volumes:
   static_data:
