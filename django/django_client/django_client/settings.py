@@ -25,11 +25,12 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # Environment Variables
 domain = os.environ.get('DOMAIN')
+server_ip = os.environ.get('SERVER_IP')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get('PRODUCTION')) != "1"
 
-ALLOWED_HOSTS = ['localhost', domain]
+ALLOWED_HOSTS = ['localhost', domain, server_ip]
 
 # Application definition
 

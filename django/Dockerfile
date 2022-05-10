@@ -1,6 +1,9 @@
 # Pull Official Base Image
 FROM python:3.10.2-alpine3.15
 
+ENV PATH="/scripts:${PATH}"
+ENV PRODUCTION=1
+
 # Set Work Dir
 WORKDIR /django/django_client/
 
