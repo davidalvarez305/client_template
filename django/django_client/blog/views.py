@@ -47,7 +47,7 @@ def category(request, *args, **kwargs):
         WHERE review_post."categoryId" = (
             SELECT id FROM category AS c WHERE c.slug = %s
         )
-        ''', [category_slug, category_slug]
+        ''', [category_slug]
     )
     rows = cursor.fetchall()
     columns = ["type", "slug", "title", "description", "horizontalcardproductimageurl", "horizontalcardproductimagealt"]
@@ -88,7 +88,7 @@ def review_post(request, *args, **kwargs):
                 SELECT productaffiliateurl FROM review_post AS rp WHERE rp.slug = %s
             )
         )) AS review_post;
-        ''', [rp_slug, rp_slug, rp_slug, rp_slug]
+        ''', [rp_slug, rp_slug, rp_slug]
     )
     rows = cursor.fetchall()
     desc = cursor.description
